@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom"
 import { AppView } from "../AppView"
 
 export const PostList = () => {
-    const { posts, getPosts } = useContext(PostContext)
+    const { posts, getPosts, removePost } = useContext(PostContext)
 
     useEffect(() => {
         console.log("PostList: useEffect - getPosts")
@@ -13,9 +13,9 @@ export const PostList = () => {
     }, [])
 
         const history = useHistory()
-
-    return (
-        <>
+        
+        return (
+            <>
         <div>
             <button onClick={
                 () => history.push("posts/create")
@@ -25,6 +25,13 @@ export const PostList = () => {
             {
                 //mapping through the array of posts to grab a single post object and display it with the proper attachments
                 posts.map(post => {
+                    
+                            const handleRemove = () => {
+                                removePost(post.id)
+                                .then(() => {
+                                    history.push("/posts")
+                                })
+                            }
                     return (
                         <div className="post" id={`post--${post.id}`}>
                             <div className="postTitle">
@@ -41,6 +48,7 @@ export const PostList = () => {
                             <div className="postInstructions">
                                 Instructions: {post.instructions}
                             </div>
+                            <button onClick={handleRemove}>Remove Post</button>
                         </div>
                     )
                 })
