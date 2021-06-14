@@ -13,9 +13,32 @@ import "./MyFavoriteRecipe.css";
 export const MyFavoriteRecipe = () => (
 
 
-    <>
-        <NavBar />
-        <AppView />
-    </>
+    // <>
+    //     <NavBar />
+    //     <AppView />
+    // </>
 
+    <>
+    <Route
+      render={() => {
+        if (localStorage.getItem("myFavoriteRecipe_user")) {
+          return (
+            <>
+              <NavBar />
+              <AppView />
+            </>
+          );
+        } else {
+          return <Redirect to="/login" />;
+        }
+      }}
+    />
+
+    <Route path="/login">
+      <Login />
+    </Route>
+    <Route path="/register">
+      <Register />
+    </Route>
+  </>
 );

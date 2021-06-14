@@ -7,7 +7,6 @@ export const LikeProvider = (props) => {
 //give me the likes 
     const getLikes = () => {
         return fetch("http://localhost:8088/likes")
-
             .then(res => res.json())
             .then(setLikes)
     }

@@ -3,6 +3,7 @@ import { PostContext } from "./PostProvider"
 import "./Posts.css"
 import { useHistory } from "react-router-dom"
 import { AppView } from "../AppView"
+import userEvent from "@testing-library/user-event"
 
 export const PostList = () => {
     const { posts, getPosts, removePost } = useContext(PostContext)
@@ -12,48 +13,53 @@ export const PostList = () => {
         getPosts()
     }, [])
 
-        const history = useHistory()
-        
-        return (
-            <>
-        <div>
-            <button onClick={
-                () => history.push("posts/create")
-            }>POST</button>
-        </div>
-        <section className="posts">
-            {
-                //mapping through the array of posts to grab a single post object and display it with the proper attachments
-                posts.map(post => {
-                    
-                            const handleRemove = () => {
-                                removePost(post.id)
+    const history = useHistory()
+
+
+    return (
+        <>
+            <div className="movePostButton">
+                <button className="postButton" onClick={
+                    () => history.push("posts/create")
+                }></button>
+            </div>
+            <section className="posts">
+                {
+
+                    //mapping through the array of posts to grab a single post object and display it with the proper attachments
+                    posts.map(post => {
+
+                        const handleRemove = () => {
+                            removePost(post.id)
                                 .then(() => {
                                     history.push("/posts")
                                 })
-                            }
-                    return (
-                        <div className="post" id={`post--${post.id}`}>
-                            <div className="postTitle">
-                                Title: {post.title}
+                        }
+                        return (
+                            <div className="post" id={`post--${post.id}`}>
+                                <div className="postTitle postText">
+                                    <strong>Title</strong>: {post.title}
+                                </div>
+                                <div className="postCreator">
+                                </div>
+                                
+                                <img className="postImage"
+                                    src={post.imageURL} />
+                                   
+
+                                <div className="postIngredients postText">
+                                    <strong>Ingredients</strong>: {post.ingredients}
+                                </div>
+                                <div className="postInstructions postText">
+                                    <strong>Instructions</strong>: {post.instructions}
+                                </div>
+                                <button className="removeAndAddButtons" onClick={handleRemove}>Remove Post</button>
+                                <button className="removeAndAddButtons" >Add To My CookBook</button>
                             </div>
-                            <div className="postCreator">
-                            </div>
-                            <img className="postImage"
-                                src={post.imageURL} />
-                            
-                            <div className="postIngredients">
-                                Ingredients: {post.ingredients}
-                            </div>
-                            <div className="postInstructions">
-                                Instructions: {post.instructions}
-                            </div>
-                            <button onClick={handleRemove}>Remove Post</button>
-                        </div>
-                    )
-                })
-            }
-        </section>
+                        )
+                    })
+                }
+            </section>
         </>
     )
 }
