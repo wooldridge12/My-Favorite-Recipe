@@ -15,11 +15,8 @@
     border: solid black;
 }
 .postButton {
-    background-image: url("http://www.clker.com/cliparts/9/B/V/A/L/j/post-button-hi.png");
-    background-size: 100%;
     height: 8rem;
     width: 8rem;
-    border-radius:4rem;
 }
 .movePostButton {
     margin-left: 30rem;
@@ -28,7 +25,12 @@
 }
 .removeAndAddButtons {
     border-radius: 0.5rem;
-    height: 2rem
+    height: 2rem;
+    
+}
+.postTitle {
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 

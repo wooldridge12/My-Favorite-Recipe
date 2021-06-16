@@ -29,6 +29,7 @@ export const PostForm = () => {
         const newPost = {
             // userId: userId,
             title: post.title,
+            userId: parseInt(localStorage.getItem("myFavoriteRecipe_user")),
             imageURL: post.imageURL,
             ingredients: post.ingredients,
             instructions: post.instructions

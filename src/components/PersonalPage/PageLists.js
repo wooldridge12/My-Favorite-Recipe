@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import "./Page.css"
 import { LikeContext } from "./PageProvider"
-import { PostContext } from "../Posts/PostProvider"
+// import { PostContext } from "../Posts/PostProvider"
 
 
 export const PageList = () => {
@@ -9,12 +9,12 @@ export const PageList = () => {
     // const { posts, getPosts } = useContext(PostContext)
     
     useEffect(() => {
-        console.log("CustomerList: useEffect - getLikes")
+        console.log("List: useEffect - getLikes")
         getLikes()
     }, [])
 
         
-        // const likeId = parseInt(post)
+       
         
         return(
             <section className="likes">
@@ -22,8 +22,13 @@ export const PageList = () => {
                 likes.map(like => {
                     return (
                         <div className="like" value={`like--${like.id}`}>
-                            <div>
-                                {like.id}
+                            <div className="likeGroupBox">
+                                <div className="titleOfLikes">{like.title}</div><br/>
+                                <img className="likePostImage"
+                                    src={like.imageURL} />
+                                {like.ingredients}<br/>
+                                <div className="spaceBetweenText">
+                                {like.instructions}</div>
                             </div>
                         </div>
 

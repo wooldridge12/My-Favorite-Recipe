@@ -12,12 +12,6 @@ import "./MyFavoriteRecipe.css";
 
 export const MyFavoriteRecipe = () => (
 
-
-    // <>
-    //     <NavBar />
-    //     <AppView />
-    // </>
-
     <>
     <Route
       render={() => {

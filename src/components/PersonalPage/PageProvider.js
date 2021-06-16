@@ -10,6 +10,12 @@ export const LikeProvider = (props) => {
             .then(res => res.json())
             .then(setLikes)
     }
+
+    const getCurrentUserLikes = (userId) => {
+        return fetch(`http://localhost:8088/likes?userId=${userId}`)
+            .then(res => res.json())
+            .then(setLikes)
+    }
 //allow me to add likes by the POST method
     const addLikes = like => {
         return fetch("http://localhost:8088/likes", {
@@ -24,7 +30,7 @@ export const LikeProvider = (props) => {
 
     return (
         <LikeContext.Provider value={{
-            likes, getLikes, addLikes
+            likes, getLikes, addLikes, getCurrentUserLikes
         }}>
             {props.children}
         </LikeContext.Provider>
