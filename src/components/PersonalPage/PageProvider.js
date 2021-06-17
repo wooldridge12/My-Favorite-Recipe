@@ -6,13 +6,13 @@ export const LikeProvider = (props) => {
     const [likes, setLikes] = useState([])
 //give me the likes 
     const getLikes = () => {
-        return fetch("http://localhost:8088/likes")
+        return fetch("http://localhost:8088/likes?_expand=post")
             .then(res => res.json())
             .then(setLikes)
     }
 
     const getLikesByUserId = (userId) => {
-        return fetch(`http://localhost:8088/likes?userId=${userId}&_expand=post`)
+        return fetch(`http://localhost:8088/likes?_expand=user&userId=${userId}&_expand=post`)
             .then(res => res.json())
             .then(setLikes)
     }
@@ -28,9 +28,16 @@ export const LikeProvider = (props) => {
         .then(response => response.json())
     } 
 
+    const removeFromLikes = (likeId) => {
+        return fetch(`http://localhost:8088/likes/${likeId}`, {
+            method: "DELETE"
+        })
+        .then(getLikes)
+    }
+
     return (
         <LikeContext.Provider value={{
-            likes, getLikes, addLikes, getLikesByUserId
+            likes, getLikes, addLikes, getLikesByUserId, removeFromLikes
         }}>
             {props.children}
         </LikeContext.Provider>

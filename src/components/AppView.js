@@ -9,7 +9,7 @@ import { PostForm } from "./Posts/PostingForm"
 export const AppView = () => {
     return (
         <>
-
+            
             <LikeProvider>
                 <Route exact path="/likes">
                     <PageList />

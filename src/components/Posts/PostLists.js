@@ -62,7 +62,8 @@ export const PostList = () => {
                                 <div className="postInstructions postText">
                                     <strong>Instructions</strong>: {post.instructions}
                                 </div>
-                                <button className="removeAndAddButtons" onClick={handleRemove}>Remove Post</button>
+                                <button className="removeButton" onClick={handleRemove}>Remove Post</button>
+                                
                                 <button className="addTo" onClick={handleAddingToLikes}>Add To My CookBook</button>
                             </div>
                         )
