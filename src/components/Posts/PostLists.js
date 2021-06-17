@@ -43,7 +43,6 @@ export const PostList = () => {
                                 userId: parseInt(localStorage.getItem("myFavoriteRecipe_user")),
                                 postId: post.id
                             })
-                                
                         }
                         return (
                             <div className="post" id={`post--${post.id}`}>

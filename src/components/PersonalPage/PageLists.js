@@ -5,16 +5,16 @@ import { LikeContext } from "./PageProvider"
 
 
 export const PageList = () => {
-    const { likes, getLikes } = useContext(LikeContext)
+    const { likes, getLikes, getLikesByUserId } = useContext(LikeContext)
     // const { posts, getPosts } = useContext(PostContext)
     
     useEffect(() => {
         console.log("List: useEffect - getLikes")
-        getLikes()
+        const currentUserId = parseInt(localStorage.getItem("myFavoriteRecipe_user"))
+        getLikesByUserId(currentUserId)
     }, [])
 
-        
-       
+
         
         return(
             <section className="likes">
@@ -23,12 +23,12 @@ export const PageList = () => {
                     return (
                         <div className="like" value={`like--${like.id}`}>
                             <div className="likeGroupBox">
-                                <div className="titleOfLikes">{like.title}</div><br/>
+                                <div className="titleOfLikes">{like.post.title}</div><br/>
                                 <img className="likePostImage"
-                                    src={like.imageURL} />
-                                {like.ingredients}<br/>
+                                    src={like.post.imageURL} />
+                                {like.post.ingredients}<br/>
                                 <div className="spaceBetweenText">
-                                {like.instructions}</div>
+                                {like.post.instructions}</div>
                             </div>
                         </div>
 

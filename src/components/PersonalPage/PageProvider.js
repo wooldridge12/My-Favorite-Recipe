@@ -11,8 +11,8 @@ export const LikeProvider = (props) => {
             .then(setLikes)
     }
 
-    const getCurrentUserLikes = (userId) => {
-        return fetch(`http://localhost:8088/likes?userId=${userId}`)
+    const getLikesByUserId = (userId) => {
+        return fetch(`http://localhost:8088/likes?userId=${userId}&_expand=post`)
             .then(res => res.json())
             .then(setLikes)
     }
@@ -30,7 +30,7 @@ export const LikeProvider = (props) => {
 
     return (
         <LikeContext.Provider value={{
-            likes, getLikes, addLikes, getCurrentUserLikes
+            likes, getLikes, addLikes, getLikesByUserId
         }}>
             {props.children}
         </LikeContext.Provider>
