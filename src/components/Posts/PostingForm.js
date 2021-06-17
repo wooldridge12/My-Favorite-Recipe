@@ -9,21 +9,24 @@ export const PostForm = () => {
     const [post, setPost] = useState({
         userId: 0,
         title: "",
-        imageURL:"",
-        ingredients:"",
-        instructions:""
+        imageURL: "",
+        ingredients: "",
+        instructions: ""
     });
 
     const history = useHistory();
 
     const handleControlledInputChange = (event) => {
-        const  newPost = {...post}
+        //creating a copy of posts
+        const newPost = { ...post }
+
         newPost[event.target.id] = event.target.value
+
         setPost(newPost)
     }
 
     const handleClickSavePost = (event) => {
-        
+
         event.preventDefault()
 
         const newPost = {
@@ -35,9 +38,9 @@ export const PostForm = () => {
             instructions: post.instructions
         }
         addPost(newPost)
-        .then(() => history.push("/posts"))
+            .then(() => history.push("/posts"))
     }
-    
+
     return (
         <form className="postForm">
             <h2 className="postFormTitle">New Recipe</h2>
