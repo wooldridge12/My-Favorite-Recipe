@@ -23,11 +23,12 @@ export const PostProvider = (props) => {
     }
 
     //making a function with the method of delete
+    //pulling in postId to delete post by post.id
     const removePost = postId => {
         return fetch(`http://localhost:8088/posts/${postId}`, {
             method: "DELETE"
         })
-        .then(getPosts)
+            .then(getPosts)
     }
 
     const addPostToLikesPage = post => {
@@ -38,7 +39,7 @@ export const PostProvider = (props) => {
             },
             body: JSON.stringify(post)
         })
-        .then(response => response.json())
+            .then(response => response.json())
     }
 
     return (

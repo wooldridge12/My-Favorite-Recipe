@@ -4,7 +4,7 @@ export const LikeContext = createContext()
 
 export const LikeProvider = (props) => {
     const [likes, setLikes] = useState([])
-//give me the likes 
+    //give me the likes PLUS give the the posts attached to likes 
     const getLikes = () => {
         return fetch("http://localhost:8088/likes?_expand=post")
             .then(res => res.json())
@@ -16,7 +16,7 @@ export const LikeProvider = (props) => {
             .then(res => res.json())
             .then(setLikes)
     }
-//allow me to add likes by the POST method
+    //allow me to add likes by the POST method
     const addLikes = like => {
         return fetch("http://localhost:8088/likes", {
             method: "POST",
@@ -25,14 +25,14 @@ export const LikeProvider = (props) => {
             },
             body: JSON.stringify(like)
         })
-        .then(response => response.json())
-    } 
+            .then(response => response.json())
+    }
 
     const removeFromLikes = (likeId) => {
         return fetch(`http://localhost:8088/likes/${likeId}`, {
             method: "DELETE"
         })
-        .then(getLikes)
+            .then(getLikes)
     }
 
     return (
