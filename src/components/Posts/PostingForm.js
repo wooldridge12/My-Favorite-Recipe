@@ -24,13 +24,12 @@ export const PostForm = () => {
 
         setPost(newPost)
     }
-
+    //This fuction saves what your typed in and submits it when the submit button is clicked.
     const handleClickSavePost = (event) => {
 
         event.preventDefault()
 
         const newPost = {
-            // userId: userId,
             title: post.title,
             userId: parseInt(localStorage.getItem("myFavoriteRecipe_user")),
             imageURL: post.imageURL,

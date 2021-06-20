@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { PostContext } from "./PostProvider"
 import "./Posts.css"
 import { useHistory } from "react-router-dom"
-// import { AppView } from "../AppView"
-// import userEvent from "@testing-library/user-event"
+
 
 export const PostList = () => {
     const { posts, getPosts, removePost, addPostToLikesPage } = useContext(PostContext)
@@ -32,19 +31,22 @@ export const PostList = () => {
                     posts.map(post => {
 
                         const handleRemove = () => {
+                           
                             removePost(post.id)
-                                .then(() => {
-                                    history.push("/posts")
-                                })
                         }
-
+                        //setting each user up as different users so they dont have the same likes.
                         const handleAddingToLikes = () => {
                             addPostToLikesPage({
+                                //using localStorage to getItem by myFavortieRecipe_user.
                                 userId: parseInt(localStorage.getItem("myFavoriteRecipe_user")),
                                 postId: post.id
                             })
                         }
+
+
+
                         return (
+                           
                             <div className="post" id={`post--${post.id}`}>
                                 <div className="postTitle postText">
                                     <strong>{post.title}</strong>
@@ -62,8 +64,9 @@ export const PostList = () => {
                                 <div className="postInstructions postText">
                                     <strong>Instructions</strong>: {post.instructions}
                                 </div>
-                                <button className="removeButton" onClick={handleRemove}>Remove Post</button>
                                 
+                                <button className="removeButton" onClick={handleRemove}>Remove Post</button>
+
                                 <button className="addTo" onClick={handleAddingToLikes}>Add To My CookBook</button>
                             </div>
                         )
