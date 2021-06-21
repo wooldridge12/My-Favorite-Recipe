@@ -31,8 +31,9 @@ export const PostList = () => {
                     posts.map(post => {
 
                         const handleRemove = () => {
-                           
-                            removePost(post.id)
+                            if (post.userId === parseInt(localStorage.getItem("myFavoriteRecipe_user"))) {
+                            removePost(post.id) }
+                            else return `<br />`
                         }
                         //setting each user up as different users so they dont have the same likes.
                         const handleAddingToLikes = () => {
