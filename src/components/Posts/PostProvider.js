@@ -7,6 +7,7 @@ export const PostProvider = (props) => {
     //get me the post array of objects
     const getPosts = () => {
         return fetch("http://localhost:8088/posts")
+        //convert string from json into an object
             .then(res => res.json())
             .then(setPosts)
     }
