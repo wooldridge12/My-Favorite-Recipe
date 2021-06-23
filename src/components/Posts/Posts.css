@@ -17,7 +17,8 @@
 .postButton {
     height: 8rem;
     width: 8rem;
-    border: solid black
+    border: solid black;
+    border-radius: 8px;
 }
 .movePostButton {
     display: flex;
