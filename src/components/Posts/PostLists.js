@@ -3,7 +3,7 @@ import { PostContext } from "./PostProvider"
 import "./Posts.css"
 import { useHistory } from "react-router-dom"
 
-
+//useContext is using getPosts which gets the the posts on page reload using the useEffect hook. Also is setting getPosts to posts so i can map through posts to allow me to iterate through each post to give me the title of each post etc.
 export const PostList = () => {
     const { posts, getPosts, removePost, addPostToLikesPage } = useContext(PostContext)
 
@@ -31,7 +31,6 @@ export const PostList = () => {
                     posts.map(post => {
 
                         const handleRemove = () => {
-                           
                             removePost(post.id)
                         }
                         //setting each user up as different users so they dont have the same likes.
@@ -65,7 +64,12 @@ export const PostList = () => {
                                     <strong>Instructions</strong>: {post.instructions}
                                 </div>
                                 
-                                <button className="removeButton" onClick={handleRemove}>Remove Post</button>
+                                {(post.userId === parseInt(localStorage.getItem("myFavoriteRecipe_user"))) ? <button className="removeButton" onClick={ event => {
+                                    event.preventDefault()
+                                    handleRemove()
+                                    }}>Remove Post</button> : <> </>}
+
+                                
 
                                 <button className="addTo" onClick={handleAddingToLikes}>Add To My CookBook</button>
                             </div>
