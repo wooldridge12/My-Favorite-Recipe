@@ -7,12 +7,10 @@
     width: 75%;
     margin-left: 7rem;
 }
-.spaceBetweenText {
-    margin-top: 1rem;
-}
 .titleOfLikes {
     text-align: center;
     font-weight: bolder;
+    margin-bottom: 1rem;
 }
 .likePostImage {
     width: 100px;

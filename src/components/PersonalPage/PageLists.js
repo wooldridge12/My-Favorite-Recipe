@@ -26,8 +26,11 @@ export const PageList = () => {
                                 <div className="titleOfLikes">{like.post.title}</div>
                                 <img className="likePostImage"
                                     src={like.post.imageURL} />
+                                   <div> 
+                                       <strong>Ingredients</strong>:
                                 {like.post.ingredients}
-                                <div className="spaceBetweenText">
+                                    </div>
+                                <div className="spaceBetweenText"><strong>Instructions</strong>:
                                     {like.post.instructions}</div>
 
                                 <button onClick={() => {

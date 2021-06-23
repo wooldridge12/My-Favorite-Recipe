@@ -28,3 +28,4 @@ export const AppView = () => {
         </>
     )
 }
+//This page routes between 3 dif components and makes different context available to those components.
