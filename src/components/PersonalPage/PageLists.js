@@ -33,7 +33,7 @@ export const PageList = () => {
                                 <div className="spaceBetweenText"><strong>Instructions</strong>:
                                     {like.post.instructions}</div>
 
-                                <button onClick={() => {
+                                <button className="removeLikesButton" onClick={() => {
                                     removeFromLikes(like.id)
                                         .then(() => {
                                             history.push("/likes")
