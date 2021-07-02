@@ -7,15 +7,14 @@ import { useHistory } from "react-router-dom"
 export const PostList = () => {
     const { posts, getPosts, removePost, addPostToLikesPage } = useContext(PostContext)
 
-
+    //The useEffect() hook allows the component to reach out into the world for anything that cannot be handled during render. In this case, it is the API calls for the posts.
+    //useEffect runs after every render (by default), and can optionally clean up for itself before it runs again.
     useEffect(() => {
         console.log("PostList: useEffect - getPosts")
         getPosts()
     }, [])
 
     const history = useHistory()
-
-
 
     return (
         <>
@@ -60,6 +59,7 @@ export const PostList = () => {
                                 <div className="postIngredients postText">
                                     <strong>Ingredients</strong>: {post.ingredients}
                                 </div>
+
                                 <div className="postInstructions postText">
                                     <strong>Instructions</strong>: {post.instructions}
                                 </div>
