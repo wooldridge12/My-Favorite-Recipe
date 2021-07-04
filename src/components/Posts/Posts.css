@@ -32,7 +32,7 @@
 }
 .movePostButton {
     display: flex;
-    margin-left: 32rem;
+    justify-content: center;
     margin-top: 10rem;
     margin-bottom: 5rem;
 }
